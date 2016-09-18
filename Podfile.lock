@@ -1,0 +1,21 @@
+PODS:
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
+  - Font-Awesome-Swift (1.4.8)
+  - GMStepper (1.2.0)
+  - Material (1.42.9)
+
+DEPENDENCIES:
+  - ChameleonFramework/Swift
+  - Font-Awesome-Swift (~> 1.4.8)
+  - GMStepper
+  - Material (~> 1.0)
+
+SPEC CHECKSUMS:
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  Font-Awesome-Swift: 354c9440b0e4d692e31171c84091f3510e8f9468
+  GMStepper: e743b5648ae5fe877e33d3b51b5aa2df432f179d
+  Material: a84ed893b7785f0d3c8d568e88c055f82b436473
+
+COCOAPODS: 0.39.0

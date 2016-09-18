@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Material
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
@@ -20,8 +21,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
         splitViewController.delegate = self
+        updateNavBarLook()
+        updateStatusBar()
         return true
     }
+    
+    
+    func updateNavBarLook() {
+        let navAppearance = UINavigationBar.appearance()
+        navAppearance.barTintColor = MaterialColor.blue.base
+        navAppearance.tintColor = MaterialColor.white
+        navAppearance.titleTextAttributes = [NSFontAttributeName:UIFont(name: "HelveticaNeue-Light" as String, size: 0)!,NSForegroundColorAttributeName: UIColor.whiteColor()]
+        
+    }
+    
+    func updateStatusBar()
+    {
+    
+    UIApplication.sharedApplication().statusBarStyle = .LightContent
+        let statusBar: UIView = UIApplication.sharedApplication().valueForKey("statusBar") as! UIView
+        if statusBar.respondsToSelector(Selector("setBackgroundColor:")) {
+            statusBar.backgroundColor = MaterialColor.blue.darken1
+        }
+        
+    
+    }
+    
+    
+    
+    /*
+ NSShadow *shadow = [[NSShadow alloc] init];
+ shadow.shadowColor = [UIColor blackColor];
+ shadow.shadowBlurRadius = 0.0;
+ shadow.shadowOffset = CGSizeMake(0.0, 2.0);
+ [[UINavigationBar appearance] setTitleTextAttributes: @{
+ NSForegroundColorAttributeName : [UIColor blackColor],
+ NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Light" size:0.0f],
+ NSShadowAttributeName : shadow
+ }];
+ */
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

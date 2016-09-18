@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D92A3916FFE1A7E35972D9A /* Pods_HabitMinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D53DB4642F4E5C50613BD47 /* Pods_HabitMinder.framework */; };
+		7E26EC141D7DFE3E006BE5C6 /* HabitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E26EC131D7DFE3E006BE5C6 /* HabitData.swift */; };
+		7E4C6BD01D7E34C4003B0E44 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4C6BCF1D7E34C4003B0E44 /* Habit.swift */; };
+		7E4C6BD31D7E47D7003B0E44 /* HabitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4C6BD11D7E47D7003B0E44 /* HabitTableViewCell.swift */; };
+		7E6AED1C1D84E89600821C69 /* HabitOperatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6AED1B1D84E89600821C69 /* HabitOperatorViewController.swift */; };
+		7E6AED1E1D85F44100821C69 /* StringFixer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6AED1D1D85F44100821C69 /* StringFixer.swift */; };
+		7E6AED221D85FCDB00821C69 /* AddOperatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6AED211D85FCDB00821C69 /* AddOperatorViewController.swift */; };
+		7E6AED271D8B9F0300821C69 /* Fonter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6AED261D8B9F0300821C69 /* Fonter.swift */; };
 		7ECCE7E31D6BA46300BA1164 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCE7E21D6BA46300BA1164 /* AppDelegate.swift */; };
 		7ECCE7E51D6BA46300BA1164 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCE7E41D6BA46300BA1164 /* MasterViewController.swift */; };
 		7ECCE7E71D6BA46300BA1164 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCE7E61D6BA46300BA1164 /* DetailViewController.swift */; };
@@ -15,6 +23,10 @@
 		7ECCE7EF1D6BA46300BA1164 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ECCE7ED1D6BA46300BA1164 /* LaunchScreen.storyboard */; };
 		7ECCE7FA1D6BA46300BA1164 /* DisciplineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCE7F91D6BA46300BA1164 /* DisciplineTests.swift */; };
 		7ECCE8051D6BA46300BA1164 /* DisciplineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCE8041D6BA46300BA1164 /* DisciplineUITests.swift */; };
+		7ECCE8141D73506900BA1164 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCE8131D73506900BA1164 /* AddItemViewController.swift */; };
+		7ECCE8161D735A8700BA1164 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCE8151D735A8700BA1164 /* constants.swift */; };
+		7ECCE8191D73EA0300BA1164 /* SPLRawJsonRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCE8181D73EA0300BA1164 /* SPLRawJsonRetriever.swift */; };
+		7ECCE81B1D73F33E00BA1164 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCE81A1D73F33E00BA1164 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +47,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7ECCE7DF1D6BA46300BA1164 /* Discipline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Discipline.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		02E05B83DBBF217A177C7F01 /* Pods-HabitMinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitMinder.release.xcconfig"; path = "Pods/Target Support Files/Pods-HabitMinder/Pods-HabitMinder.release.xcconfig"; sourceTree = "<group>"; };
+		0D53DB4642F4E5C50613BD47 /* Pods_HabitMinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabitMinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		49097B0FF52183FC4A38E5F4 /* Pods-HabitMinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitMinder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HabitMinder/Pods-HabitMinder.debug.xcconfig"; sourceTree = "<group>"; };
+		7E26EC131D7DFE3E006BE5C6 /* HabitData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitData.swift; sourceTree = "<group>"; };
+		7E4C6BCF1D7E34C4003B0E44 /* Habit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
+		7E4C6BD11D7E47D7003B0E44 /* HabitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitTableViewCell.swift; sourceTree = "<group>"; };
+		7E6AED1B1D84E89600821C69 /* HabitOperatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitOperatorViewController.swift; sourceTree = "<group>"; };
+		7E6AED1D1D85F44100821C69 /* StringFixer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringFixer.swift; sourceTree = "<group>"; };
+		7E6AED211D85FCDB00821C69 /* AddOperatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOperatorViewController.swift; sourceTree = "<group>"; };
+		7E6AED261D8B9F0300821C69 /* Fonter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonter.swift; sourceTree = "<group>"; };
+		7ECCE7DF1D6BA46300BA1164 /* HabitMinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitMinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ECCE7E21D6BA46300BA1164 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7ECCE7E41D6BA46300BA1164 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		7ECCE7E61D6BA46300BA1164 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -43,12 +65,17 @@
 		7ECCE7EB1D6BA46300BA1164 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7ECCE7EE1D6BA46300BA1164 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7ECCE7F01D6BA46300BA1164 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7ECCE7F51D6BA46300BA1164 /* DisciplineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DisciplineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7ECCE7F51D6BA46300BA1164 /* HabitMinder.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitMinder.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ECCE7F91D6BA46300BA1164 /* DisciplineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisciplineTests.swift; sourceTree = "<group>"; };
 		7ECCE7FB1D6BA46300BA1164 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7ECCE8001D6BA46300BA1164 /* DisciplineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DisciplineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7ECCE8001D6BA46300BA1164 /* HabitMinder.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitMinder.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ECCE8041D6BA46300BA1164 /* DisciplineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisciplineUITests.swift; sourceTree = "<group>"; };
 		7ECCE8061D6BA46300BA1164 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7ECCE8121D73481700BA1164 /* Notes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Notes.txt; sourceTree = "<group>"; };
+		7ECCE8131D73506900BA1164 /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		7ECCE8151D735A8700BA1164 /* constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
+		7ECCE8181D73EA0300BA1164 /* SPLRawJsonRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPLRawJsonRetriever.swift; sourceTree = "<group>"; };
+		7ECCE81A1D73F33E00BA1164 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D92A3916FFE1A7E35972D9A /* Pods_HabitMinder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,81 +104,134 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A6502C6D55BE893CEEB6B03 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D53DB4642F4E5C50613BD47 /* Pods_HabitMinder.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7E6AED231D863CEA00821C69 /* Operator */ = {
+			isa = PBXGroup;
+			children = (
+				7E6AED1B1D84E89600821C69 /* HabitOperatorViewController.swift */,
+				7E6AED211D85FCDB00821C69 /* AddOperatorViewController.swift */,
+			);
+			name = Operator;
+			sourceTree = "<group>";
+		};
 		7ECCE7D61D6BA46300BA1164 = {
 			isa = PBXGroup;
 			children = (
-				7ECCE7E11D6BA46300BA1164 /* Discipline */,
-				7ECCE7F81D6BA46300BA1164 /* DisciplineTests */,
-				7ECCE8031D6BA46300BA1164 /* DisciplineUITests */,
+				7ECCE7E11D6BA46300BA1164 /* HabitMinder */,
+				7ECCE7F81D6BA46300BA1164 /* HabitMinderTests */,
+				7ECCE8031D6BA46300BA1164 /* HabitMinderUITests */,
 				7ECCE7E01D6BA46300BA1164 /* Products */,
+				1A6502C6D55BE893CEEB6B03 /* Frameworks */,
+				ECB0B80256BC1095646BE0C6 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
 		7ECCE7E01D6BA46300BA1164 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7ECCE7DF1D6BA46300BA1164 /* Discipline.app */,
-				7ECCE7F51D6BA46300BA1164 /* DisciplineTests.xctest */,
-				7ECCE8001D6BA46300BA1164 /* DisciplineUITests.xctest */,
+				7ECCE7DF1D6BA46300BA1164 /* HabitMinder.app */,
+				7ECCE7F51D6BA46300BA1164 /* HabitMinder.xctest */,
+				7ECCE8001D6BA46300BA1164 /* HabitMinder.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7ECCE7E11D6BA46300BA1164 /* Discipline */ = {
+		7ECCE7E11D6BA46300BA1164 /* HabitMinder */ = {
 			isa = PBXGroup;
 			children = (
-				7ECCE7E21D6BA46300BA1164 /* AppDelegate.swift */,
+				7E6AED231D863CEA00821C69 /* Operator */,
+				7ECCE8171D73E9EE00BA1164 /* Utilities */,
 				7ECCE7E41D6BA46300BA1164 /* MasterViewController.swift */,
+				7ECCE8131D73506900BA1164 /* AddItemViewController.swift */,
 				7ECCE7E61D6BA46300BA1164 /* DetailViewController.swift */,
+				7E4C6BCF1D7E34C4003B0E44 /* Habit.swift */,
 				7ECCE7E81D6BA46300BA1164 /* Main.storyboard */,
+				7E4C6BD11D7E47D7003B0E44 /* HabitTableViewCell.swift */,
 				7ECCE7EB1D6BA46300BA1164 /* Assets.xcassets */,
 				7ECCE7ED1D6BA46300BA1164 /* LaunchScreen.storyboard */,
 				7ECCE7F01D6BA46300BA1164 /* Info.plist */,
+				7ECCE8151D735A8700BA1164 /* constants.swift */,
+				7ECCE7E21D6BA46300BA1164 /* AppDelegate.swift */,
 			);
+			name = HabitMinder;
 			path = Discipline;
 			sourceTree = "<group>";
 		};
-		7ECCE7F81D6BA46300BA1164 /* DisciplineTests */ = {
+		7ECCE7F81D6BA46300BA1164 /* HabitMinderTests */ = {
 			isa = PBXGroup;
 			children = (
 				7ECCE7F91D6BA46300BA1164 /* DisciplineTests.swift */,
 				7ECCE7FB1D6BA46300BA1164 /* Info.plist */,
 			);
+			name = HabitMinderTests;
 			path = DisciplineTests;
 			sourceTree = "<group>";
 		};
-		7ECCE8031D6BA46300BA1164 /* DisciplineUITests */ = {
+		7ECCE8031D6BA46300BA1164 /* HabitMinderUITests */ = {
 			isa = PBXGroup;
 			children = (
 				7ECCE8041D6BA46300BA1164 /* DisciplineUITests.swift */,
 				7ECCE8061D6BA46300BA1164 /* Info.plist */,
 			);
+			name = HabitMinderUITests;
 			path = DisciplineUITests;
+			sourceTree = "<group>";
+		};
+		7ECCE8171D73E9EE00BA1164 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				7ECCE8121D73481700BA1164 /* Notes.txt */,
+				7ECCE81A1D73F33E00BA1164 /* SwiftyJSON.swift */,
+				7ECCE8181D73EA0300BA1164 /* SPLRawJsonRetriever.swift */,
+				7E26EC131D7DFE3E006BE5C6 /* HabitData.swift */,
+				7E6AED1D1D85F44100821C69 /* StringFixer.swift */,
+				7E6AED261D8B9F0300821C69 /* Fonter.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		ECB0B80256BC1095646BE0C6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				49097B0FF52183FC4A38E5F4 /* Pods-HabitMinder.debug.xcconfig */,
+				02E05B83DBBF217A177C7F01 /* Pods-HabitMinder.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7ECCE7DE1D6BA46300BA1164 /* Discipline */ = {
+		7ECCE7DE1D6BA46300BA1164 /* HabitMinder */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7ECCE8091D6BA46300BA1164 /* Build configuration list for PBXNativeTarget "Discipline" */;
+			buildConfigurationList = 7ECCE8091D6BA46300BA1164 /* Build configuration list for PBXNativeTarget "HabitMinder" */;
 			buildPhases = (
+				ECE137A89FE186FD225894EC /* Check Pods Manifest.lock */,
 				7ECCE7DB1D6BA46300BA1164 /* Sources */,
 				7ECCE7DC1D6BA46300BA1164 /* Frameworks */,
 				7ECCE7DD1D6BA46300BA1164 /* Resources */,
+				8C1C32C20A0C7DEEDBB5F003 /* Embed Pods Frameworks */,
+				EA95E54B665FA5B4431B68DB /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Discipline;
+			name = HabitMinder;
 			productName = Discipline;
-			productReference = 7ECCE7DF1D6BA46300BA1164 /* Discipline.app */;
+			productReference = 7ECCE7DF1D6BA46300BA1164 /* HabitMinder.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7ECCE7F41D6BA46300BA1164 /* DisciplineTests */ = {
+		7ECCE7F41D6BA46300BA1164 /* HabitMinderTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7ECCE80C1D6BA46300BA1164 /* Build configuration list for PBXNativeTarget "DisciplineTests" */;
+			buildConfigurationList = 7ECCE80C1D6BA46300BA1164 /* Build configuration list for PBXNativeTarget "HabitMinderTests" */;
 			buildPhases = (
 				7ECCE7F11D6BA46300BA1164 /* Sources */,
 				7ECCE7F21D6BA46300BA1164 /* Frameworks */,
@@ -161,14 +242,14 @@
 			dependencies = (
 				7ECCE7F71D6BA46300BA1164 /* PBXTargetDependency */,
 			);
-			name = DisciplineTests;
+			name = HabitMinderTests;
 			productName = DisciplineTests;
-			productReference = 7ECCE7F51D6BA46300BA1164 /* DisciplineTests.xctest */;
+			productReference = 7ECCE7F51D6BA46300BA1164 /* HabitMinder.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7ECCE7FF1D6BA46300BA1164 /* DisciplineUITests */ = {
+		7ECCE7FF1D6BA46300BA1164 /* HabitMinderUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7ECCE80F1D6BA46300BA1164 /* Build configuration list for PBXNativeTarget "DisciplineUITests" */;
+			buildConfigurationList = 7ECCE80F1D6BA46300BA1164 /* Build configuration list for PBXNativeTarget "HabitMinderUITests" */;
 			buildPhases = (
 				7ECCE7FC1D6BA46300BA1164 /* Sources */,
 				7ECCE7FD1D6BA46300BA1164 /* Frameworks */,
@@ -179,9 +260,9 @@
 			dependencies = (
 				7ECCE8021D6BA46300BA1164 /* PBXTargetDependency */,
 			);
-			name = DisciplineUITests;
+			name = HabitMinderUITests;
 			productName = DisciplineUITests;
-			productReference = 7ECCE8001D6BA46300BA1164 /* DisciplineUITests.xctest */;
+			productReference = 7ECCE8001D6BA46300BA1164 /* HabitMinder.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -196,6 +277,7 @@
 				TargetAttributes = {
 					7ECCE7DE1D6BA46300BA1164 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = Q3YWELPZJ9;
 					};
 					7ECCE7F41D6BA46300BA1164 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -207,7 +289,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7ECCE7DA1D6BA46300BA1164 /* Build configuration list for PBXProject "Discipline" */;
+			buildConfigurationList = 7ECCE7DA1D6BA46300BA1164 /* Build configuration list for PBXProject "HabitMinder" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -220,9 +302,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7ECCE7DE1D6BA46300BA1164 /* Discipline */,
-				7ECCE7F41D6BA46300BA1164 /* DisciplineTests */,
-				7ECCE7FF1D6BA46300BA1164 /* DisciplineUITests */,
+				7ECCE7DE1D6BA46300BA1164 /* HabitMinder */,
+				7ECCE7F41D6BA46300BA1164 /* HabitMinderTests */,
+				7ECCE7FF1D6BA46300BA1164 /* HabitMinderUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -254,14 +336,73 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8C1C32C20A0C7DEEDBB5F003 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabitMinder/Pods-HabitMinder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA95E54B665FA5B4431B68DB /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabitMinder/Pods-HabitMinder-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ECE137A89FE186FD225894EC /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7ECCE7DB1D6BA46300BA1164 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				7ECCE7E71D6BA46300BA1164 /* DetailViewController.swift in Sources */,
+				7E6AED1C1D84E89600821C69 /* HabitOperatorViewController.swift in Sources */,
+				7ECCE8141D73506900BA1164 /* AddItemViewController.swift in Sources */,
+				7E6AED271D8B9F0300821C69 /* Fonter.swift in Sources */,
+				7E4C6BD31D7E47D7003B0E44 /* HabitTableViewCell.swift in Sources */,
+				7E26EC141D7DFE3E006BE5C6 /* HabitData.swift in Sources */,
 				7ECCE7E51D6BA46300BA1164 /* MasterViewController.swift in Sources */,
+				7ECCE8191D73EA0300BA1164 /* SPLRawJsonRetriever.swift in Sources */,
+				7ECCE8161D735A8700BA1164 /* constants.swift in Sources */,
+				7E4C6BD01D7E34C4003B0E44 /* Habit.swift in Sources */,
+				7E6AED1E1D85F44100821C69 /* StringFixer.swift in Sources */,
+				7ECCE81B1D73F33E00BA1164 /* SwiftyJSON.swift in Sources */,
 				7ECCE7E31D6BA46300BA1164 /* AppDelegate.swift in Sources */,
+				7E6AED221D85FCDB00821C69 /* AddOperatorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,12 +427,12 @@
 /* Begin PBXTargetDependency section */
 		7ECCE7F71D6BA46300BA1164 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7ECCE7DE1D6BA46300BA1164 /* Discipline */;
+			target = 7ECCE7DE1D6BA46300BA1164 /* HabitMinder */;
 			targetProxy = 7ECCE7F61D6BA46300BA1164 /* PBXContainerItemProxy */;
 		};
 		7ECCE8021D6BA46300BA1164 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7ECCE7DE1D6BA46300BA1164 /* Discipline */;
+			target = 7ECCE7DE1D6BA46300BA1164 /* HabitMinder */;
 			targetProxy = 7ECCE8011D6BA46300BA1164 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -401,23 +542,35 @@
 		};
 		7ECCE80A1D6BA46300BA1164 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49097B0FF52183FC4A38E5F4 /* Pods-HabitMinder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Discipline/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shannonlayden.Discipline;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shannonlayden.HabitMinder;
+				PRODUCT_NAME = HabitMinder;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		7ECCE80B1D6BA46300BA1164 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02E05B83DBBF217A177C7F01 /* Pods-HabitMinder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Discipline/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shannonlayden.Discipline;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shannonlayden.HabitMinder;
+				PRODUCT_NAME = HabitMinder;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -428,8 +581,8 @@
 				INFOPLIST_FILE = DisciplineTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shannonlayden.DisciplineTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Discipline.app/Discipline";
+				PRODUCT_NAME = HabitMinder;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HabitMinder.app/HabitMinder";
 			};
 			name = Debug;
 		};
@@ -440,8 +593,8 @@
 				INFOPLIST_FILE = DisciplineTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shannonlayden.DisciplineTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Discipline.app/Discipline";
+				PRODUCT_NAME = HabitMinder;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HabitMinder.app/HabitMinder";
 			};
 			name = Release;
 		};
@@ -451,7 +604,7 @@
 				INFOPLIST_FILE = DisciplineUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shannonlayden.DisciplineUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HabitMinder;
 				TEST_TARGET_NAME = Discipline;
 			};
 			name = Debug;
@@ -462,7 +615,7 @@
 				INFOPLIST_FILE = DisciplineUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shannonlayden.DisciplineUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HabitMinder;
 				TEST_TARGET_NAME = Discipline;
 			};
 			name = Release;
@@ -470,7 +623,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7ECCE7DA1D6BA46300BA1164 /* Build configuration list for PBXProject "Discipline" */ = {
+		7ECCE7DA1D6BA46300BA1164 /* Build configuration list for PBXProject "HabitMinder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7ECCE8071D6BA46300BA1164 /* Debug */,
@@ -479,29 +632,32 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7ECCE8091D6BA46300BA1164 /* Build configuration list for PBXNativeTarget "Discipline" */ = {
+		7ECCE8091D6BA46300BA1164 /* Build configuration list for PBXNativeTarget "HabitMinder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7ECCE80A1D6BA46300BA1164 /* Debug */,
 				7ECCE80B1D6BA46300BA1164 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		7ECCE80C1D6BA46300BA1164 /* Build configuration list for PBXNativeTarget "DisciplineTests" */ = {
+		7ECCE80C1D6BA46300BA1164 /* Build configuration list for PBXNativeTarget "HabitMinderTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7ECCE80D1D6BA46300BA1164 /* Debug */,
 				7ECCE80E1D6BA46300BA1164 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		7ECCE80F1D6BA46300BA1164 /* Build configuration list for PBXNativeTarget "DisciplineUITests" */ = {
+		7ECCE80F1D6BA46300BA1164 /* Build configuration list for PBXNativeTarget "HabitMinderUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7ECCE8101D6BA46300BA1164 /* Debug */,
 				7ECCE8111D6BA46300BA1164 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
