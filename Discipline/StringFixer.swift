@@ -27,4 +27,9 @@ class StringFixer{
         return text.stringByReplacingOccurrencesOfString("@", withString: "")
     }
     
+    static func fixNumber(number:Double)->String
+    {
+      return String(format: number == floor(number) ? "%.0f" : "%.1f", number)
+    }
+    
 }

@@ -14,16 +14,15 @@ import GMStepper
 
 class AddItemViewController : UIViewController {
     
-  
+    @IBOutlet weak var lblScore: UILabel!
     @IBOutlet weak var sprIncrement: UIStepper!
-  
-   
     @IBOutlet weak var btnCancel: UIBarButtonItem!
+    @IBOutlet weak var stpOperatorStepper: UIStepper!
     @IBOutlet weak var btnBadHabitOperator: RaisedButton!
     @IBOutlet weak var btnGoodHabitOperator: RaisedButton!
-    @IBOutlet weak var badHabitText: UITextField!
+
     var HabitOperator:String = ""
-    var HabitMultiplyer:Int = 1
+    var HabitMultiplyer:Double = 0
     var isBadHabit = true
     
     @IBOutlet weak var txtHabitText: TextField!
@@ -36,45 +35,78 @@ class AddItemViewController : UIViewController {
         
         let stepper:UIStepper = sender as! UIStepper
         print(stepper.value)
+        self.HabitMultiplyer = stepper.value
+        let score = String(Int(self.HabitMultiplyer))
+        self.lblScore.text = isBadHabit ? "Owe \(score)" : "Receive \(score)"
     }
     
-  
-    
     @IBAction func btnBadHabitAction(sender: AnyObject) {
-        
+        self.isBadHabit = true
     }
     
     @IBAction func btnGoodHabitAction(sender: AnyObject) {
+        self.isBadHabit = false
     }
     
     override func viewDidLoad() {
-        
-        self.prepareHabitTextField()
-        self.prepareBadOperatorButton()
-        self.prepareGoodOperatorButton()
-        self.prepareStepper()
-        
-       // self.view.layout(txtHabitText).top(100).horizontally(left: 40, right: 40)
-       
-
-       // self.view.layout(btnOperator).top(txtHabitText).horizontally(txtHabitText)
-      //  self.view.addSubview(txtHabitText)
-     //   self.view.addSubview(btnGoodHabitOperator)
-     //   self.view.addSubview(btnBadHabitOperator)
         super.viewDidLoad()
     }
     
   
     override func viewWillAppear(animated: Bool) {
-        if(!self.HabitOperator.isEmpty){
-           
-          if((lblOperator == nil))
-          {
-            self.lblOperator = MaterialLabel()
-            self.view.addSubview(lblOperator)
-          }
-            self.prepareOperatorLabel()
+        
+        if(self.HabitOperator.isEmpty){
+          self.setEmptyState()
+        }else
+        {
+            self.setEditState()
         }
+        
+    }
+    
+    func setEmptyState(){
+        
+        self.txtHabitText.font = UIFont(name: Constants.FONT_LIGHT, size: 35)
+        self.txtHabitText.placeholder = "My Habit"
+        self.prepareBadOperatorButton()
+        self.prepareGoodOperatorButton()
+        self.stpOperatorStepper.hidden = true
+        self.lblOperator.hidden = true
+        self.lblScore.hidden = true
+    }
+    
+    func setEditState(){
+        self.HabitMultiplyer = self.stpOperatorStepper.value
+        self.lblOperator.text  = self.HabitOperator
+        self.txtHabitText.placeholder = ""
+        self.setOperator()
+        self.txtHabitText.font = UIFont(name: Constants.FONT_LIGHT, size: 35)
+        self.prepareStepper()
+       // self.prepareOperatorLabel()
+        self.prepareHabitTextField()
+        self.hideButtons()
+        self.stpOperatorStepper.hidden = false
+        self.lblOperator.hidden = false
+        self.lblScore.hidden = false
+        
+   
+     }
+    
+    func setOperator(){
+        self.lblScore.hidden = false
+        self.lblScore.font = UIFont(name: Constants.FONT_LIGHT, size: 35)
+        self.lblScore.text = String(self.HabitMultiplyer)
+        self.lblScore.text = self.isBadHabit ? "Owe \(String(Int(self.stpOperatorStepper.value)))" : "Receive \(String(Int(self.stpOperatorStepper.value)))"
+        self.lblOperator.hidden = false
+        self.lblOperator.font = UIFont(name: Constants.FONT_LIGHT, size: 35)
+        self.lblOperator.text = StringFixer.MakeOperatorPlural(self.HabitOperator)
+
+    }
+    
+    func hideButtons()
+    {
+        self.btnBadHabitOperator.hidden = true
+        self.btnGoodHabitOperator.hidden = true
     }
     
     func prepareStepper()
@@ -95,7 +127,6 @@ class AddItemViewController : UIViewController {
     func prepareOperatorLabel()
     {
      Fonter.fixlabel(self.lblOperator)
-      //  self.lblOperator.font = UIFont(name: Constants.FONT_LIGHT, size: 16)
         self.view.layout(lblOperator).top(150).horizontally(left: 40, right: 40)
         let OperatorType:String = isBadHabit ? "Penalty":"Reward"
         let FixedOperator:String = StringFixer.MakeOperatorPlural(self.HabitOperator)
@@ -107,10 +138,11 @@ class AddItemViewController : UIViewController {
         Fonter.fixbutton(self.btnBadHabitOperator)
     //self.btnBadHabitOperator = RaisedButton()9
  //   self.btnBadHabitOperator.titleLabel?.font = Fontfix.setlabelfont(UILabel())
-        self.btnBadHabitOperator.setTitle("Punish", forState: .Normal)
+    self.btnBadHabitOperator.titleLabel?.font = UIFont(name: Constants.FONT_REG, size: 20)!
+    self.btnBadHabitOperator.setTitle("Punish", forState: .Normal)
     self.btnBadHabitOperator.setTitleColor(MaterialColor.white, forState: .Normal)
-    self.btnBadHabitOperator.pulseColor = MaterialColor.orange.accent4
-    self.btnBadHabitOperator.backgroundColor = MaterialColor.orange.base
+    self.btnBadHabitOperator.pulseColor = MaterialColor.red.accent4
+    self.btnBadHabitOperator.backgroundColor = MaterialColor.red.base
 
     }
     
@@ -118,6 +150,7 @@ class AddItemViewController : UIViewController {
     {
         //self.btnGoodHabitOperator = RaisedButton()
         Fonter.fixbutton(self.btnGoodHabitOperator)
+        self.btnGoodHabitOperator.titleLabel?.font = UIFont(name: Constants.FONT_REG, size: 20)!
         self.btnGoodHabitOperator.setTitle("Reward", forState: .Normal)
         self.btnGoodHabitOperator.setTitleColor(MaterialColor.white, forState: .Normal)
         self.btnGoodHabitOperator.pulseColor = MaterialColor.green.accent4
@@ -128,10 +161,7 @@ class AddItemViewController : UIViewController {
     
    func prepareHabitTextField()
     {
-    
     self.txtHabitText.clearButtonMode = .WhileEditing
-   // Fonter.fixlabel(self.txtHabitText)
-    
     }
     
     
@@ -140,11 +170,11 @@ class AddItemViewController : UIViewController {
         //let still allows mutable array to be changed. Just not reassigned.
         
         if let habit = txtHabitText.text where !habit.isEmpty{
-            let Operator:String = StringFixer.MakeOperatorPlural(self.HabitOperator.lowercaseString)
-         let newHabit:Habit = Habit(title: habit, habitOperatorSize: 10, habitoperator: Operator)
+        let Operator:String = StringFixer.MakeOperatorPlural(self.HabitOperator.lowercaseString)
+         let newHabit:Habit = Habit(title: habit, habitOperatorSize: self.HabitMultiplyer, habitoperator: Operator, isbadHabit: self.isBadHabit)
          self.habits!.addObject(newHabit)
          let habitData:HabitData = HabitData()
-         habitData.saveHabitsToFile(self.habits!, FileName: Constants.FILENAME_HABIT)
+         habitData.saveArrayToFile(self.habits!, FileName: Constants.FILENAME_HABIT)
         }
         else{
             raiseEmptyTextError()
@@ -175,6 +205,15 @@ class AddItemViewController : UIViewController {
         
         // show the alert
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+       if(segue.destinationViewController is UINavigationController)
+       {
+        let navController:UINavigationController = segue.destinationViewController as! UINavigationController
+        let habitOpController:HabitOperatorViewController =  navController.viewControllers[0] as! HabitOperatorViewController
+        habitOpController.isPunishment = self.isBadHabit
+        }
     }
     
     func retrieveBadHabits()->NSMutableArray{

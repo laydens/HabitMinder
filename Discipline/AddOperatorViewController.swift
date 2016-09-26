@@ -9,49 +9,75 @@
 import UIKit
 import Material
 
-class AddOperatorViewController: UIViewController {
+class AddOperatorViewController: UIViewController, UITextFieldDelegate {
 
-    private var operators:NSMutableArray!
-    private var txtOperatorText:TextField!
+    private var Operators:NSMutableArray!
+    var isPunishment:Bool = true
    
+    @IBOutlet weak var txtOperatorField: TextField!
     override func viewDidLoad() {
-    
+        
     self.prepareHabitTextField()
     super.viewDidLoad()
-    
-    self.view.addSubview(txtOperatorText)
         
     }
     
     override func viewDidAppear(animated: Bool) {
-        txtOperatorText.becomeFirstResponder()
+        txtOperatorField.becomeFirstResponder()
         super.viewDidAppear(true)
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        if (self.isMovingFromParentViewController() || self.isBeingDismissed()) {
+            
+            
+            if(txtOperatorField.text?.isEmpty != true)
+            {
+                let opData:OperatorData =  OperatorData()
+                let ops:NSMutableArray = isPunishment ? opData.retrievePunishments() : opData.retrieveRewards()
+                ops.addObject(txtOperatorField.text!)
+                let saveSucces = isPunishment ? opData.savePunishments(ops) : opData.saveRewards(ops)
+                print(saveSucces)
+                
+            }
+        }
+    }
+    
+    func addNewOperator(){
+        if(isPunishment){
+            //Add New Punishment To List
+        }
+        else{
+            // Add New Reward
+        }
+    }
     
     func prepareHabitTextField()
     {
         
-        self.txtOperatorText = TextField()
-        self.txtOperatorText.placeholder = "hello there"
-        self.txtOperatorText.clearButtonMode = .WhileEditing
+       self.txtOperatorField.delegate = self;
+       self.txtOperatorField.returnKeyType = UIReturnKeyType.Done
+       self.txtOperatorField.font = UIFont(name: Constants.FONT_LIGHT, size: 35)
+       self.txtOperatorField.placeholder = isPunishment ? "My Punishment" : "My Reward"
+        self.txtOperatorField.clearButtonMode = .WhileEditing
         
     }
     
+  /*
+    - (void)textFieldDidEndEditing:(UITextField *)textField {
+    [textField resignFirstResponder];
+    }
+ */
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        self.txtOperatorField.resignFirstResponder()
+    }
+    
+    
     func retrieveOperators()->NSMutableArray{
-        if self.operators != nil {
-            return self.operators!
-        }
-        else{
-            let habitData:HabitData = HabitData()
-            self.operators = habitData.retrieveItemsFromFile(Constants.FILENAME_OPERATORS)
-            if self.operators != nil{
-                return self.operators!
-            }
-            else{
-                return Constants.OPERATORS
-            }
-        }
+        let operatorData:OperatorData = OperatorData()
+        self.Operators = isPunishment ? operatorData.retrievePunishments() : operatorData.retrieveRewards()
+        return self.Operators
     }
 
 

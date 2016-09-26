@@ -12,27 +12,20 @@ class HabitOperatorViewController: UITableViewController {
 
     var HabitOperators:NSMutableArray = NSMutableArray()
     var SelectedOperatorIndex:Int = 0
+    var isPunishment:Bool = true
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-         self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        
+        self.HabitOperators = self.retrieveHabitOperators()
+        self.navigationItem.leftBarButtonItem = self.editButtonItem()
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addNewOperator(_:)))
         self.navigationItem.rightBarButtonItem = addButton
-      //  if let split = self.splitViewController {
-       //     let controllers = split.viewControllers
-          //  self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.SelectedOperatorIndex = indexPath.row
         let presenting:AddItemViewController = self.presentingViewController as! AddItemViewController
-        
         presenting.HabitOperator = self.HabitOperators[self.SelectedOperatorIndex] as! String
+        presenting.isBadHabit = self.isPunishment
          self.navigationController?.dismissViewControllerAnimated(true, completion: {
             
          })
@@ -40,6 +33,7 @@ class HabitOperatorViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         HabitOperators = retrieveHabitOperators()
+        self.tableView.reloadData()
     }
     
     func addNewOperator(sender: AnyObject) {
@@ -48,7 +42,12 @@ class HabitOperatorViewController: UITableViewController {
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+        if(segue.destinationViewController is AddOperatorViewController)
+        {
+            
+            let habitOpController:AddOperatorViewController =  segue.destinationViewController as! AddOperatorViewController
+            habitOpController.isPunishment = self.isPunishment
+        }
        
     }
     
@@ -76,8 +75,6 @@ class HabitOperatorViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        
-        
         cell.textLabel?.text = StringFixer.MakeOperatorPlural(HabitOperators[indexPath.row].capitalizedString)
         
         return cell
@@ -104,26 +101,11 @@ class HabitOperatorViewController: UITableViewController {
     
     func retrieveHabitOperators()->NSMutableArray
     {
-        let habitData:HabitData = HabitData()
-        self.HabitOperators = habitData.retrieveItemsFromFile(Constants.FILENAME_OPERATORS)!
-        
-        if self.HabitOperators.count > 0{
-            return self.HabitOperators
-        }
-        else{
-            return Constants.OPERATORS
-        }
+
+        let OpDataManager:OperatorData = OperatorData()
+        self.HabitOperators = self.isPunishment ? OpDataManager.retrievePunishments() : OpDataManager.retrieveRewards()
+        return self.HabitOperators
     }
-
-    
-        
-    
-        
-        
-
-    
-
-
 
     /*
     // Override to support rearranging the table view.

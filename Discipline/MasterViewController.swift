@@ -14,6 +14,7 @@ class MasterViewController: UITableViewController, HabitAdderDelegate {
 
     var detailViewController: DetailViewController? = nil
     var AllHabits:NSMutableArray = NSMutableArray()
+    var SelectedCellIndex:Int = -1
 
 
     override func viewDidLoad() {
@@ -21,13 +22,24 @@ class MasterViewController: UITableViewController, HabitAdderDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
-
+        
+        let scoreButton = UIBarButtonItem(image: UIImage(named: "scorekeeper_white"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(showScore(_:)))
+        //UIBarButtonItem(barButtonSystemItem: .Compose, target: self, action: #selector(showScore(_:)))
+       
+        
+        
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addNewHabit(_:)))
-        self.navigationItem.rightBarButtonItem = addButton
+        self.navigationItem.rightBarButtonItems = [addButton, scoreButton]
+    
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+    }
+    
+    func showScore(sender: AnyObject){
+      print("showScore")
+    
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -45,9 +57,31 @@ class MasterViewController: UITableViewController, HabitAdderDelegate {
        let habit:Habit = AllHabits.objectAtIndex(habitCell.index) as! Habit
        habit.HabitScore += 1
        let habitData:HabitData = HabitData()
-        habitData.saveHabitsToFile(AllHabits, FileName: Constants.FILENAME_HABIT)
+       habitCell.pulseLabel()
+       habitData.saveArrayToFile(AllHabits, FileName: Constants.FILENAME_HABIT)
        self.tableView.reloadData()
+       self.SelectedCellIndex = habitCell.index
+        habitCell.pulseLabel()
     }
+    
+   func flashAndFadeCell()
+   {
+    
+    
+   }
+    
+    func fadeIn()
+    {
+    
+    
+    }
+    
+    func fadeOut()
+    {
+    
+    
+    }
+    
     
     //User tapped refresh, so set it back to zero.
     func refreshSelected(habitCell:HabitTableViewCell)
@@ -55,7 +89,7 @@ class MasterViewController: UITableViewController, HabitAdderDelegate {
         let habit:Habit = AllHabits.objectAtIndex(habitCell.index) as! Habit
         habit.HabitScore = 0
         let habitData:HabitData = HabitData()
-        habitData.saveHabitsToFile(AllHabits,FileName: Constants.FILENAME_HABIT)
+        habitData.saveArrayToFile(AllHabits,FileName: Constants.FILENAME_HABIT)
         self.tableView.reloadData()
     }
     
@@ -87,6 +121,7 @@ class MasterViewController: UITableViewController, HabitAdderDelegate {
             }
         }
     }
+    
 
     // MARK: - Table View
 
@@ -104,24 +139,32 @@ class MasterViewController: UITableViewController, HabitAdderDelegate {
         cell.index = indexPath.row
         let object = AllHabits[indexPath.row] as! Habit
         cell.lblTitle.text = object.Title
-        cell.lblStats.text = "You owe \(object.HabitScore * object.HabitOperatorSize) \(object.HabitOperator)"
+        let payback = object.IsBadHabit ? "You owe" : "You receive"
+        let opScore:String = StringFixer.fixNumber(object.HabitScore * object.HabitOperatorSize)
+        cell.lblStats.text = "\(payback) \(opScore) \(object.HabitOperator)"
+//        if(indexPath.row == self.SelectedCellIndex){
+//         cell.pulseLabel()
+//            cell.lblStats.textColor = MaterialColor.green.accent1
+//        }
         
-        self.formatCellButtons(cell)
+        self.formatCellButtons(cell, isBadHabit: object.IsBadHabit)
         
         return cell
     }
     
-    func formatCellButtons(cell:HabitTableViewCell)
+    func formatCellButtons(cell:HabitTableViewCell, isBadHabit:Bool)
     {
         //Add Button
+        let colorbase:UIColor = isBadHabit ? MaterialColor.red.base : MaterialColor.green.base
+        let colorAccent:UIColor = isBadHabit ? MaterialColor.red.accent1 : MaterialColor.green.accent1
         cell.btnAdd.setFAIcon(FAType.FAPlusSquare, iconSize: 45, forState: .Normal)
-        cell.btnAdd.setFATitleColor(MaterialColor.blue.base, forState: .Normal)
-        cell.btnAdd.setFATitleColor(MaterialColor.blue.accent3, forState: .Selected)
+        cell.btnAdd.setFATitleColor(colorbase, forState: .Normal)
+        cell.btnAdd.setFATitleColor(colorAccent, forState: .Selected)
         
         //Refresh Button
         cell.btnRefresh.setFAIcon(FAType.FARefresh, iconSize: 25, forState: .Normal)
-        cell.btnRefresh.setFATitleColor(MaterialColor.lightGreen.base, forState: .Normal)
-        cell.btnRefresh.setFATitleColor(MaterialColor.lightGreen.accent3, forState: .Selected)
+        cell.btnRefresh.setFATitleColor(MaterialColor.lightBlue.base, forState: .Normal)
+        cell.btnRefresh.setFATitleColor(MaterialColor.lightBlue.accent3, forState: .Selected)
     
     }
 
@@ -131,11 +174,12 @@ class MasterViewController: UITableViewController, HabitAdderDelegate {
     }
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+       
         if editingStyle == .Delete {
             AllHabits.removeObjectAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             let habitData:HabitData = HabitData()
-            habitData.saveHabitsToFile(AllHabits,FileName: Constants.FILENAME_HABIT)
+            habitData.saveArrayToFile(AllHabits,FileName: Constants.FILENAME_HABIT)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }

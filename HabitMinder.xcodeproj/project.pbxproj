@@ -15,11 +15,14 @@
 		7E6AED1E1D85F44100821C69 /* StringFixer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6AED1D1D85F44100821C69 /* StringFixer.swift */; };
 		7E6AED221D85FCDB00821C69 /* AddOperatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6AED211D85FCDB00821C69 /* AddOperatorViewController.swift */; };
 		7E6AED271D8B9F0300821C69 /* Fonter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6AED261D8B9F0300821C69 /* Fonter.swift */; };
+		7EA8A97B1D8F171E000D6B64 /* OperatorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA8A97A1D8F171E000D6B64 /* OperatorData.swift */; };
+		7EA8A9801D8FA358000D6B64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EA8A97F1D8FA358000D6B64 /* Assets.xcassets */; };
+		7EA8A9841D90D79F000D6B64 /* App Icon [Squared] in Resources */ = {isa = PBXBuildFile; fileRef = 7EA8A9831D90D79F000D6B64 /* App Icon [Squared] */; };
+		7EA8A9881D9972EC000D6B64 /* scorekeeper_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA8A9871D9972EC000D6B64 /* scorekeeper_white.png */; };
 		7ECCE7E31D6BA46300BA1164 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCE7E21D6BA46300BA1164 /* AppDelegate.swift */; };
 		7ECCE7E51D6BA46300BA1164 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCE7E41D6BA46300BA1164 /* MasterViewController.swift */; };
 		7ECCE7E71D6BA46300BA1164 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCE7E61D6BA46300BA1164 /* DetailViewController.swift */; };
 		7ECCE7EA1D6BA46300BA1164 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ECCE7E81D6BA46300BA1164 /* Main.storyboard */; };
-		7ECCE7EC1D6BA46300BA1164 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ECCE7EB1D6BA46300BA1164 /* Assets.xcassets */; };
 		7ECCE7EF1D6BA46300BA1164 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ECCE7ED1D6BA46300BA1164 /* LaunchScreen.storyboard */; };
 		7ECCE7FA1D6BA46300BA1164 /* DisciplineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCE7F91D6BA46300BA1164 /* DisciplineTests.swift */; };
 		7ECCE8051D6BA46300BA1164 /* DisciplineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCE8041D6BA46300BA1164 /* DisciplineUITests.swift */; };
@@ -57,12 +60,15 @@
 		7E6AED1D1D85F44100821C69 /* StringFixer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringFixer.swift; sourceTree = "<group>"; };
 		7E6AED211D85FCDB00821C69 /* AddOperatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOperatorViewController.swift; sourceTree = "<group>"; };
 		7E6AED261D8B9F0300821C69 /* Fonter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonter.swift; sourceTree = "<group>"; };
+		7EA8A97A1D8F171E000D6B64 /* OperatorData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorData.swift; sourceTree = "<group>"; };
+		7EA8A97F1D8FA358000D6B64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7EA8A9831D90D79F000D6B64 /* App Icon [Squared] */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "App Icon [Squared]"; path = "Assets.xcassets/App Icon [Squared]"; sourceTree = "<group>"; };
+		7EA8A9871D9972EC000D6B64 /* scorekeeper_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scorekeeper_white.png; sourceTree = "<group>"; };
 		7ECCE7DF1D6BA46300BA1164 /* HabitMinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitMinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ECCE7E21D6BA46300BA1164 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7ECCE7E41D6BA46300BA1164 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		7ECCE7E61D6BA46300BA1164 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		7ECCE7E91D6BA46300BA1164 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7ECCE7EB1D6BA46300BA1164 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7ECCE7EE1D6BA46300BA1164 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7ECCE7F01D6BA46300BA1164 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7ECCE7F51D6BA46300BA1164 /* HabitMinder.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitMinder.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +127,26 @@
 			name = Operator;
 			sourceTree = "<group>";
 		};
+		7EA8A9851D942852000D6B64 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				7EA8A9871D9972EC000D6B64 /* scorekeeper_white.png */,
+				7ECCE7F01D6BA46300BA1164 /* Info.plist */,
+				7EA8A9831D90D79F000D6B64 /* App Icon [Squared] */,
+				7EA8A97F1D8FA358000D6B64 /* Assets.xcassets */,
+				7ECCE7ED1D6BA46300BA1164 /* LaunchScreen.storyboard */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		7EA8A9861D9428A2000D6B64 /* ModelClasses */ = {
+			isa = PBXGroup;
+			children = (
+				7E4C6BCF1D7E34C4003B0E44 /* Habit.swift */,
+			);
+			name = ModelClasses;
+			sourceTree = "<group>";
+		};
 		7ECCE7D61D6BA46300BA1164 = {
 			isa = PBXGroup;
 			children = (
@@ -146,19 +172,17 @@
 		7ECCE7E11D6BA46300BA1164 /* HabitMinder */ = {
 			isa = PBXGroup;
 			children = (
+				7ECCE7E81D6BA46300BA1164 /* Main.storyboard */,
+				7ECCE7E21D6BA46300BA1164 /* AppDelegate.swift */,
+				7EA8A9861D9428A2000D6B64 /* ModelClasses */,
 				7E6AED231D863CEA00821C69 /* Operator */,
 				7ECCE8171D73E9EE00BA1164 /* Utilities */,
 				7ECCE7E41D6BA46300BA1164 /* MasterViewController.swift */,
 				7ECCE8131D73506900BA1164 /* AddItemViewController.swift */,
 				7ECCE7E61D6BA46300BA1164 /* DetailViewController.swift */,
-				7E4C6BCF1D7E34C4003B0E44 /* Habit.swift */,
-				7ECCE7E81D6BA46300BA1164 /* Main.storyboard */,
 				7E4C6BD11D7E47D7003B0E44 /* HabitTableViewCell.swift */,
-				7ECCE7EB1D6BA46300BA1164 /* Assets.xcassets */,
-				7ECCE7ED1D6BA46300BA1164 /* LaunchScreen.storyboard */,
-				7ECCE7F01D6BA46300BA1164 /* Info.plist */,
 				7ECCE8151D735A8700BA1164 /* constants.swift */,
-				7ECCE7E21D6BA46300BA1164 /* AppDelegate.swift */,
+				7EA8A9851D942852000D6B64 /* App */,
 			);
 			name = HabitMinder;
 			path = Discipline;
@@ -193,6 +217,7 @@
 				7E26EC131D7DFE3E006BE5C6 /* HabitData.swift */,
 				7E6AED1D1D85F44100821C69 /* StringFixer.swift */,
 				7E6AED261D8B9F0300821C69 /* Fonter.swift */,
+				7EA8A97A1D8F171E000D6B64 /* OperatorData.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -315,7 +340,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7ECCE7EF1D6BA46300BA1164 /* LaunchScreen.storyboard in Resources */,
-				7ECCE7EC1D6BA46300BA1164 /* Assets.xcassets in Resources */,
+				7EA8A9881D9972EC000D6B64 /* scorekeeper_white.png in Resources */,
+				7EA8A9841D90D79F000D6B64 /* App Icon [Squared] in Resources */,
+				7EA8A9801D8FA358000D6B64 /* Assets.xcassets in Resources */,
 				7ECCE7EA1D6BA46300BA1164 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,6 +428,7 @@
 				7E4C6BD01D7E34C4003B0E44 /* Habit.swift in Sources */,
 				7E6AED1E1D85F44100821C69 /* StringFixer.swift in Sources */,
 				7ECCE81B1D73F33E00BA1164 /* SwiftyJSON.swift in Sources */,
+				7EA8A97B1D8F171E000D6B64 /* OperatorData.swift in Sources */,
 				7ECCE7E31D6BA46300BA1164 /* AppDelegate.swift in Sources */,
 				7E6AED221D85FCDB00821C69 /* AddOperatorViewController.swift in Sources */,
 			);
