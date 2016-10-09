@@ -11,9 +11,9 @@ import Material
 
 class AddOperatorViewController: UIViewController, UITextFieldDelegate {
 
-    private var Operators:NSMutableArray!
+    fileprivate var Operators:NSMutableArray!
     var isPunishment:Bool = true
-   
+
     @IBOutlet weak var txtOperatorField: TextField!
     override func viewDidLoad() {
         
@@ -22,20 +22,20 @@ class AddOperatorViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         txtOperatorField.becomeFirstResponder()
         super.viewDidAppear(true)
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        if (self.isMovingFromParentViewController() || self.isBeingDismissed()) {
+    override func viewWillDisappear(_ animated: Bool) {
+        if (self.isMovingFromParentViewController || self.isBeingDismissed) {
             
             
             if(txtOperatorField.text?.isEmpty != true)
             {
                 let opData:OperatorData =  OperatorData()
                 let ops:NSMutableArray = isPunishment ? opData.retrievePunishments() : opData.retrieveRewards()
-                ops.addObject(txtOperatorField.text!)
+                ops.add(txtOperatorField.text!)
                 let saveSucces = isPunishment ? opData.savePunishments(ops) : opData.saveRewards(ops)
                 print(saveSucces)
                 
@@ -56,10 +56,10 @@ class AddOperatorViewController: UIViewController, UITextFieldDelegate {
     {
         
        self.txtOperatorField.delegate = self;
-       self.txtOperatorField.returnKeyType = UIReturnKeyType.Done
+       self.txtOperatorField.returnKeyType = UIReturnKeyType.done
        self.txtOperatorField.font = UIFont(name: Constants.FONT_LIGHT, size: 35)
        self.txtOperatorField.placeholder = isPunishment ? "My Punishment" : "My Reward"
-        self.txtOperatorField.clearButtonMode = .WhileEditing
+        self.txtOperatorField.clearButtonMode = .whileEditing
         
     }
     
@@ -69,7 +69,7 @@ class AddOperatorViewController: UIViewController, UITextFieldDelegate {
     }
  */
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         self.txtOperatorField.resignFirstResponder()
     }
     

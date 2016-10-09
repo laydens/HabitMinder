@@ -4,3 +4,5 @@ Creat Habit Object
 Title, Description, Punishment or Reward, Good Habit or Bad?
 
 
+
+/Developer/iPhoneApps/Discipline/HabitMinder/Discipline/ScoresTableViewController.swift:10:8: Module file was created by an older version of the compiler; rebuild 'Font_Awesome_Swift' and try again: /Users/shannonlayden/Library/Developer/Xcode/DerivedData/HabitMinder-alaosdhsposkyebdtabyucjhyrug/Build/Products/Debug-iphonesimulator/Font_Awesome_Swift.framework/Modules/Font_Awesome_Swift.swiftmodule/x86_64.swiftmodule

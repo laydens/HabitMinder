@@ -28,31 +28,31 @@ class Habit: NSObject, Comparable, NSCoding {
    
     
     required convenience init?(coder decoder: NSCoder) {
-        guard let title = decoder.decodeObjectForKey("title") as? String,
-            let habitoperator = decoder.decodeObjectForKey("habitoperator") as? String,
-            let summary = decoder.decodeObjectForKey("summary") as? String
+        guard let title = decoder.decodeObject(forKey: "title") as? String,
+            let habitoperator = decoder.decodeObject(forKey: "habitoperator") as? String,
+            let summary = decoder.decodeObject(forKey: "summary") as? String
             else { return nil }
         
         
         self.init(
             title: title,
-            habitOperatorSize: decoder.decodeDoubleForKey("habitoperatorsize"),
+            habitOperatorSize: decoder.decodeDouble(forKey: "habitoperatorsize"),
             habitoperator: habitoperator,
-            isbadHabit:decoder.decodeBoolForKey("isbadhabit")
+            isbadHabit:decoder.decodeBool(forKey: "isbadhabit")
         )
         self.Summary = summary
-        self.HabitScore = decoder.decodeDoubleForKey("habitscore")
+        self.HabitScore = decoder.decodeDouble(forKey: "habitscore")
     }
     
     
     
-    func encodeWithCoder(coder: NSCoder) {
-        coder.encodeObject(self.Title, forKey: "title")
-        coder.encodeObject(self.Summary, forKey: "summary")
-        coder.encodeObject(self.HabitOperator, forKey: "habitoperator")
-        coder.encodeDouble(self.HabitOperatorSize, forKey: "habitoperatorsize")
-        coder.encodeBool(self.IsBadHabit, forKey: "isbadhabit")
-        coder.encodeDouble(self.HabitScore, forKey: "habitscore")
+    func encode(with coder: NSCoder) {
+        coder.encode(self.Title, forKey: "title")
+        coder.encode(self.Summary, forKey: "summary")
+        coder.encode(self.HabitOperator, forKey: "habitoperator")
+        coder.encode(self.HabitOperatorSize, forKey: "habitoperatorsize")
+        coder.encode(self.IsBadHabit, forKey: "isbadhabit")
+        coder.encode(self.HabitScore, forKey: "habitscore")
     }
 }
 

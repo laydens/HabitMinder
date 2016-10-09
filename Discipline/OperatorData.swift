@@ -10,8 +10,8 @@ import Foundation
 
 class OperatorData {
 
-    private var Rewards:NSMutableArray = NSMutableArray()
-    private var Punishments:NSMutableArray = NSMutableArray()
+    fileprivate var Rewards:NSMutableArray = NSMutableArray()
+    fileprivate var Punishments:NSMutableArray = NSMutableArray()
     
     
     func retrievePunishments()->NSMutableArray{
@@ -44,19 +44,19 @@ class OperatorData {
         return self.Rewards
     }
     
-    func saveRewards(rewards:NSMutableArray)->Bool{
+    func saveRewards(_ rewards:NSMutableArray)->Bool{
         
         return saveOps(Constants.FILENAME_REWARDS, array: rewards)
         
     }
 
-    func savePunishments(punishments:NSMutableArray)->Bool{
+    func savePunishments(_ punishments:NSMutableArray)->Bool{
         return saveOps(Constants.FILENAME_PUNISHMENTS, array: punishments)
     
     }
 
 
-    func saveOps(fileName:String, array:NSMutableArray)->Bool{
+    func saveOps(_ fileName:String, array:NSMutableArray)->Bool{
         let dataManager:HabitData = HabitData()
         return dataManager.saveArrayToFile(array, FileName: fileName)
     }

@@ -8,30 +8,32 @@
 
 import UIKit
 import Material
-import GMStepper
+
 
 
 
 class AddItemViewController : UIViewController {
     
+    @IBOutlet weak var btnSmallPunishment: RaisedButton!
+    @IBOutlet weak var btnSmallReward: RaisedButton!
     @IBOutlet weak var lblScore: UILabel!
     @IBOutlet weak var sprIncrement: UIStepper!
     @IBOutlet weak var btnCancel: UIBarButtonItem!
     @IBOutlet weak var stpOperatorStepper: UIStepper!
     @IBOutlet weak var btnBadHabitOperator: RaisedButton!
     @IBOutlet weak var btnGoodHabitOperator: RaisedButton!
-
+    var habit:Habit?
+    var habitIndex:Int = -1
     var HabitOperator:String = ""
     var HabitMultiplyer:Double = 0
     var isBadHabit = true
     
-    @IBOutlet weak var txtHabitText: TextField!
-    @IBOutlet weak var lblOperator: MaterialLabel!
+    @IBOutlet weak var txtHabitText: UITextField!
+    @IBOutlet var lblOperator: UILabel!
    // private var txtkHabitText:TextField!
-    var json:JSON = []
     var habits:NSMutableArray?
    
-    @IBAction func stpStep(sender: AnyObject) {
+    @IBAction func stpStep(_ sender: AnyObject) {
         
         let stepper:UIStepper = sender as! UIStepper
         print(stepper.value)
@@ -40,64 +42,78 @@ class AddItemViewController : UIViewController {
         self.lblScore.text = isBadHabit ? "Owe \(score)" : "Receive \(score)"
     }
     
-    @IBAction func btnBadHabitAction(sender: AnyObject) {
+    @IBAction func btnBadHabitAction(_ sender: AnyObject) {
         self.isBadHabit = true
     }
     
-    @IBAction func btnGoodHabitAction(sender: AnyObject) {
+    @IBAction func btnGoodHabitAction(_ sender: AnyObject) {
         self.isBadHabit = false
     }
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
   
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
-        if(self.HabitOperator.isEmpty){
+        if(self.HabitOperator.isEmpty && self.habit == nil){
           self.setEmptyState()
         }else
         {
+            if self.habit != nil {
+                self.txtHabitText.text = self.habit?.Title
+                self.stpOperatorStepper.value = (self.habit?.HabitOperatorSize)!
+                self.HabitOperator = (self.habit?.HabitOperator)!
+                self.setOperator()
+                
+            }
             self.setEditState()
+            
         }
         
     }
     
     func setEmptyState(){
-        
         self.txtHabitText.font = UIFont(name: Constants.FONT_LIGHT, size: 35)
         self.txtHabitText.placeholder = "My Habit"
         self.prepareBadOperatorButton()
         self.prepareGoodOperatorButton()
-        self.stpOperatorStepper.hidden = true
-        self.lblOperator.hidden = true
-        self.lblScore.hidden = true
+        self.stpOperatorStepper.isHidden = true
+        self.lblOperator.isHidden = true
+        self.lblScore.isHidden = true
+        self.btnSmallReward.isHidden = true
+        self.btnSmallPunishment.isHidden = true
     }
     
     func setEditState(){
         self.HabitMultiplyer = self.stpOperatorStepper.value
         self.lblOperator.text  = self.HabitOperator
-        self.txtHabitText.placeholder = ""
+        //self.txtHabitText.placeholder = ""
         self.setOperator()
         self.txtHabitText.font = UIFont(name: Constants.FONT_LIGHT, size: 35)
         self.prepareStepper()
        // self.prepareOperatorLabel()
         self.prepareHabitTextField()
         self.hideButtons()
-        self.stpOperatorStepper.hidden = false
-        self.lblOperator.hidden = false
-        self.lblScore.hidden = false
+        self.stpOperatorStepper.isHidden = false
+        self.lblOperator.isHidden = false
+        self.lblScore.isHidden = false
+        self.btnSmallPunishment.isHidden = false
+        self.btnSmallReward.isHidden = false
+        prepareSmallButtons()
         
    
      }
     
     func setOperator(){
-        self.lblScore.hidden = false
+        self.lblScore.isHidden = false
         self.lblScore.font = UIFont(name: Constants.FONT_LIGHT, size: 35)
         self.lblScore.text = String(self.HabitMultiplyer)
         self.lblScore.text = self.isBadHabit ? "Owe \(String(Int(self.stpOperatorStepper.value)))" : "Receive \(String(Int(self.stpOperatorStepper.value)))"
-        self.lblOperator.hidden = false
+        self.lblScore.adjustsFontSizeToFitWidth = true
+        self.lblOperator.isHidden = false
         self.lblOperator.font = UIFont(name: Constants.FONT_LIGHT, size: 35)
         self.lblOperator.text = StringFixer.MakeOperatorPlural(self.HabitOperator)
 
@@ -105,19 +121,20 @@ class AddItemViewController : UIViewController {
     
     func hideButtons()
     {
-        self.btnBadHabitOperator.hidden = true
-        self.btnGoodHabitOperator.hidden = true
+        self.btnBadHabitOperator.isHidden = true
+        self.btnGoodHabitOperator.isHidden = true
     }
     
     func prepareStepper()
     {
-        let stepper:GMStepper = GMStepper()
+       /* let stepper:GMStepper = GMStepper()
         self.view.addSubview(stepper)
+ */
     
     }
     
-    override func viewDidAppear(animated: Bool) {
-        txtHabitText.becomeFirstResponder()
+    override func viewDidAppear(_ animated: Bool) {
+       // txtHabitText.becomeFirstResponder()
         self.habits = retrieveBadHabits()
         super.viewDidAppear(true)
         btnCancel.title = "Cancel"
@@ -127,90 +144,122 @@ class AddItemViewController : UIViewController {
     func prepareOperatorLabel()
     {
      Fonter.fixlabel(self.lblOperator)
+        
         self.view.layout(lblOperator).top(150).horizontally(left: 40, right: 40)
         let OperatorType:String = isBadHabit ? "Penalty":"Reward"
         let FixedOperator:String = StringFixer.MakeOperatorPlural(self.HabitOperator)
         self.lblOperator.text = "\(OperatorType): \(FixedOperator)"
+        self.lblOperator.adjustsFontSizeToFitWidth = true
+    }
+    
+    func prepareSmallButtons()
+    {
+        self.btnSmallPunishment.backgroundColor = Color.red.base
+        self.btnSmallPunishment.pulseColor = Color.red.accent4
+        self.btnSmallReward.backgroundColor = Color.green.base
+        self.btnSmallReward.pulseColor = Color.green.accent4
+        self.btnSmallReward.titleLabel?.text = ""
+        self.btnSmallPunishment.titleLabel?.text = ""
     }
     
     func prepareBadOperatorButton()
     {
         Fonter.fixbutton(self.btnBadHabitOperator)
-    //self.btnBadHabitOperator = RaisedButton()9
  //   self.btnBadHabitOperator.titleLabel?.font = Fontfix.setlabelfont(UILabel())
     self.btnBadHabitOperator.titleLabel?.font = UIFont(name: Constants.FONT_REG, size: 20)!
-    self.btnBadHabitOperator.setTitle("Punish", forState: .Normal)
-    self.btnBadHabitOperator.setTitleColor(MaterialColor.white, forState: .Normal)
-    self.btnBadHabitOperator.pulseColor = MaterialColor.red.accent4
-    self.btnBadHabitOperator.backgroundColor = MaterialColor.red.base
+    self.btnBadHabitOperator.setTitle("Punish", for: UIControlState())
+    self.btnBadHabitOperator.setTitleColor(Color.white, for: UIControlState())
+    self.btnBadHabitOperator.pulseColor = Color.red.accent4
+    self.btnBadHabitOperator.backgroundColor = Color.red.base
 
     }
     
     func prepareGoodOperatorButton()
     {
-        //self.btnGoodHabitOperator = RaisedButton()
         Fonter.fixbutton(self.btnGoodHabitOperator)
         self.btnGoodHabitOperator.titleLabel?.font = UIFont(name: Constants.FONT_REG, size: 20)!
-        self.btnGoodHabitOperator.setTitle("Reward", forState: .Normal)
-        self.btnGoodHabitOperator.setTitleColor(MaterialColor.white, forState: .Normal)
-        self.btnGoodHabitOperator.pulseColor = MaterialColor.green.accent4
-        self.btnGoodHabitOperator.backgroundColor = MaterialColor.green.base
-        self.btnGoodHabitOperator.systemLayoutSizeFittingSize(CGSize(width: 70,height: 20))
+        self.btnGoodHabitOperator.setTitle("Reward", for: UIControlState())
+        self.btnGoodHabitOperator.setTitleColor(Color.white, for: UIControlState())
+        self.btnGoodHabitOperator.pulseColor = Color.green.accent4
+        self.btnGoodHabitOperator.backgroundColor = Color.green.base
+        self.btnGoodHabitOperator.systemLayoutSizeFitting(CGSize(width: 70,height: 20))
 
     }
     
    func prepareHabitTextField()
     {
-    self.txtHabitText.clearButtonMode = .WhileEditing
+    self.txtHabitText.clearButtonMode = .whileEditing
+        self.txtHabitText.adjustsFontSizeToFitWidth = true
     }
     
     
     
-    @IBAction func save(sender: AnyObject) {
+    @IBAction func save(_ sender: AnyObject) {
         //let still allows mutable array to be changed. Just not reassigned.
-        
-        if let habit = txtHabitText.text where !habit.isEmpty{
-        let Operator:String = StringFixer.MakeOperatorPlural(self.HabitOperator.lowercaseString)
-         let newHabit:Habit = Habit(title: habit, habitOperatorSize: self.HabitMultiplyer, habitoperator: Operator, isbadHabit: self.isBadHabit)
-         self.habits!.addObject(newHabit)
-         let habitData:HabitData = HabitData()
-         habitData.saveArrayToFile(self.habits!, FileName: Constants.FILENAME_HABIT)
+        if((txtHabitText.text?.isEmpty)!){
+            raiseEmptyTextError(errorMessage: Constants.ERROR_REQUIRED_HABIT_TITLE)
+        }
+        else if((lblScore.text?.isEmpty)!){
+            raiseEmptyTextError(errorMessage: Constants.ERROR_REQUIRED_OPERATOR)
+        }
+        else if(lblOperator.text?.isEmpty)!{
+            raiseEmptyTextError(errorMessage: Constants.ERROR_REQUIRED_OPERATOR)
+            
         }
         else{
-            raiseEmptyTextError()
+        let habit = txtHabitText.text
+        let Operator:String = StringFixer.MakeOperatorPlural(self.HabitOperator.lowercased())
+            if(self.habitIndex == -1){
+             self.habit = Habit(title: habit!, habitOperatorSize: self.HabitMultiplyer, habitoperator: Operator, isbadHabit: self.isBadHabit)
+                  self.habits!.add(self.habit!)
+            }else{
+                self.habit?.Title = habit!
+                self.habit?.HabitOperatorSize = self.HabitMultiplyer
+                self.habits?.removeObject(at: self.habitIndex)
+                self.habits!.insert(self.habit!, at: self.habitIndex)
+            }
+            
+        
+            
+       
+            let habitData:HabitData = HabitData()
+            let success =  habitData.saveArrayToFile(self.habits!, FileName: Constants.FILENAME_HABIT)
+            print(success)
+            btnCancel.title = "Done"
+            self.dismiss(animated: true) {
+                //
+            }
         }
-        btnCancel.title = "Done"
-        self.dismissViewControllerAnimated(true) {
-            //
-        }
+  
+      
 
 
     }
     
-    @IBAction func cancel(sender: AnyObject) {
+    @IBAction func cancel(_ sender: AnyObject) {
         
         
-        self.dismissViewControllerAnimated(true) {
+        self.dismiss(animated: true) {
             //
         }
         
     }
     
-    func raiseEmptyTextError(){
+    func raiseEmptyTextError(errorMessage:String){
         // create the alert
-        let alert = UIAlertController(title: "Oops", message: Constants.ERROR_REQUIRED_HABIT_TITLE, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Oops", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
         
         // add an action (button)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         
         // show the alert
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-       if(segue.destinationViewController is UINavigationController)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       if(segue.destination is UINavigationController)
        {
-        let navController:UINavigationController = segue.destinationViewController as! UINavigationController
+        let navController:UINavigationController = segue.destination as! UINavigationController
         let habitOpController:HabitOperatorViewController =  navController.viewControllers[0] as! HabitOperatorViewController
         habitOpController.isPunishment = self.isBadHabit
         }

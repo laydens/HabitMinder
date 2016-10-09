@@ -11,9 +11,8 @@ import Foundation
 class HabitData
 {
 
-var json:JSON = []
 
-    func saveArrayToFile(items:NSMutableArray, FileName:String)->Bool
+    func saveArrayToFile(_ items:NSMutableArray, FileName:String)->Bool
 {
     let filePath = self.getPath(FileName)
     let success = NSKeyedArchiver.archiveRootObject(items, toFile: filePath);
@@ -34,22 +33,22 @@ var json:JSON = []
     }
     
 
-func getPath(FileName:String)->String{
-    let paths:NSArray = NSSearchPathForDirectoriesInDomains(.ApplicationSupportDirectory,.UserDomainMask, true) as NSArray;
+func getPath(_ FileName:String)->String{
+    let paths:NSArray = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory,.userDomainMask, true) as NSArray;
     let documentsDirectory:String = paths[0] as! String;
-    let filePath:String = documentsDirectory.stringByAppendingString(FileName);
+    let filePath:String = documentsDirectory + FileName;
     return filePath
 }
 
 
 
-func retrieveItemsFromFile(fileName:String) ->NSMutableArray?
+func retrieveItemsFromFile(_ fileName:String) ->NSMutableArray?
 {
     let path = self.getPath(fileName)
     let hasFile:Bool = self.fileExists(fileName)
     var habitsOut:NSMutableArray = NSMutableArray()
     if(hasFile){
-    habitsOut = (NSKeyedUnarchiver.unarchiveObjectWithFile(path) as? NSMutableArray)!
+    habitsOut = (NSKeyedUnarchiver.unarchiveObject(withFile: path) as? NSMutableArray)!
     
    // var habitArray:NSMutableArray = habitsOut.sort({ (p1:AnyObject!, p2:AnyObject!) -> Bool in
      //       (p1 as! Habit).Title > (p2 as! Habit).Title   })
@@ -73,19 +72,14 @@ func retrieveItemsFromFile(fileName:String) ->NSMutableArray?
    // return sorted(habitsOut, >) as! NSMutableArray
 }
 
-    func fileExists(fileName:String) -> Bool
+    func fileExists(_ fileName:String) -> Bool
     {
        let path = self.getPath(fileName)
-        return NSFileManager.defaultManager().fileExistsAtPath(path)
+        return FileManager.default.fileExists(atPath: path)
     
     }
 
-    func saveHabitsToJSON(habits: NSDictionary)->JSON
-    {
-    self.json = JSON(habits)
-    return self.json
-}
-
+    
 
     
     

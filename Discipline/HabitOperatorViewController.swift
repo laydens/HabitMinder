@@ -16,36 +16,37 @@ class HabitOperatorViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.HabitOperators = self.retrieveHabitOperators()
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addNewOperator(_:)))
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewOperator(_:)))
         self.navigationItem.rightBarButtonItem = addButton
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.SelectedOperatorIndex = indexPath.row
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.SelectedOperatorIndex = (indexPath as NSIndexPath).row
         let presenting:AddItemViewController = self.presentingViewController as! AddItemViewController
         presenting.HabitOperator = self.HabitOperators[self.SelectedOperatorIndex] as! String
         presenting.isBadHabit = self.isPunishment
-         self.navigationController?.dismissViewControllerAnimated(true, completion: {
+        presenting.habit?.HabitOperator = presenting.HabitOperator
+         self.navigationController?.dismiss(animated: true, completion: {
             
          })
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         HabitOperators = retrieveHabitOperators()
         self.tableView.reloadData()
     }
     
-    func addNewOperator(sender: AnyObject) {
-        performSegueWithIdentifier("AddOperator", sender: self)
+    func addNewOperator(_ sender: AnyObject) {
+        performSegue(withIdentifier: "AddOperator", sender: self)
     }
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.destinationViewController is AddOperatorViewController)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.destination is AddOperatorViewController)
         {
             
-            let habitOpController:AddOperatorViewController =  segue.destinationViewController as! AddOperatorViewController
+            let habitOpController:AddOperatorViewController =  segue.destination as! AddOperatorViewController
             habitOpController.isPunishment = self.isPunishment
         }
        
@@ -59,12 +60,12 @@ class HabitOperatorViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return HabitOperators.count
     }
@@ -73,9 +74,10 @@ class HabitOperatorViewController: UITableViewController {
  
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        cell.textLabel?.text = StringFixer.MakeOperatorPlural(HabitOperators[indexPath.row].capitalizedString)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.font = UIFont(name: Constants.FONT_LIGHT, size: 35)
+        cell.textLabel?.text = StringFixer.MakeOperatorPlural((HabitOperators[(indexPath as NSIndexPath).row] as AnyObject).capitalized)
         
         return cell
     }
@@ -83,29 +85,56 @@ class HabitOperatorViewController: UITableViewController {
     
     
     // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
     
     
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.HabitOperators.remove(self.HabitOperators[(indexPath as NSIndexPath).row])
             // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        let opData:OperatorData =  OperatorData()
+        let saveSucces = self.isPunishment ? opData.savePunishments(self.HabitOperators) : opData.saveRewards(self.HabitOperators)
+            print(saveSucces)
+
+        } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    
+    /*
+ let opData:OperatorData =  OperatorData()
+ let ops:NSMutableArray = isPunishment ? opData.retrievePunishments() : opData.retrieveRewards()
+ ops.addObject(txtOperatorField.text!)
+ let saveSucces = isPunishment ? opData.savePunishments(ops) : opData.saveRewards(ops)
+ print(saveSucces)
+*/
+ 
+ 
     func retrieveHabitOperators()->NSMutableArray
     {
-
         let OpDataManager:OperatorData = OperatorData()
         self.HabitOperators = self.isPunishment ? OpDataManager.retrievePunishments() : OpDataManager.retrieveRewards()
         return self.HabitOperators
     }
+    
+    /*
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if editingStyle == .Delete {
+            AllHabits.removeObjectAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            let habitData:HabitData = HabitData()
+            habitData.saveArrayToFile(AllHabits,FileName: Constants.FILENAME_HABIT)
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
+    }
+ */
+
 
     /*
     // Override to support rearranging the table view.

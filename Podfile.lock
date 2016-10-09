@@ -1,21 +1,25 @@
 PODS:
-  - ChameleonFramework/Default (2.1.0)
-  - ChameleonFramework/Swift (2.1.0):
-    - ChameleonFramework/Default
-  - Font-Awesome-Swift (1.4.8)
-  - GMStepper (1.2.0)
-  - Material (1.42.9)
+  - Crashlytics (3.8.2):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.9)
+  - Font-Awesome-Swift (1.5.2)
+  - Instabug (5.3.2)
+  - Material (2.1.0)
 
 DEPENDENCIES:
-  - ChameleonFramework/Swift
-  - Font-Awesome-Swift (~> 1.4.8)
-  - GMStepper
-  - Material (~> 1.0)
+  - Crashlytics
+  - Fabric
+  - Font-Awesome-Swift
+  - Instabug
+  - Material (~> 2.0)
 
 SPEC CHECKSUMS:
-  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
-  Font-Awesome-Swift: 354c9440b0e4d692e31171c84091f3510e8f9468
-  GMStepper: e743b5648ae5fe877e33d3b51b5aa2df432f179d
-  Material: a84ed893b7785f0d3c8d568e88c055f82b436473
+  Crashlytics: 27acca95a01b042a8294291dd6dff27f8f6af6d7
+  Fabric: bc5bec42cef4bcf1ee3ce0e218fc518e4b44dfbb
+  Font-Awesome-Swift: 91eda62fa4d145ae0e4ee4d4664b656ac6a32141
+  Instabug: 035bf24475ffac1bcb81f8c542774487bc72f528
+  Material: c5c334bd7fa8c0307cb35be143b7c51c5e2c52a7
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: be4fa6da80b58b0e1c60d3829bd9e1cbd1a60009
+
+COCOAPODS: 1.0.1

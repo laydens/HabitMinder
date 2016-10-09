@@ -11,15 +11,15 @@ import UIKit
 
 class Fonter {
 
-    static func fixlabel(label:UILabel){
+    static func fixlabel(_ label:UILabel){
     label.font = UIFont(name: Constants.FONT_REG, size: 20)
     }
     
-    static func fixbutton(button:UIButton){
+    static func fixbutton(_ button:UIButton){
         button.titleLabel!.font = UIFont(name: Constants.FONT_REG, size: 18)
     }
     
-    static func fixTextField(text:UITextField){
+    static func fixTextField(_ text:UITextField){
        text.font = UIFont(name: Constants.FONT_REG, size: 20)
     
     }

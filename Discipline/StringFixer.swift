@@ -11,23 +11,23 @@ import Foundation
 class StringFixer{
     
     
-   static func SentenceCase(text:String) -> String
+   static func SentenceCase(_ text:String) -> String
     {
-        return text.capitalizedString
+        return text.capitalized
     }
     
-  static  func MakeOperatorPlural(text:String) -> String
+  static  func MakeOperatorPlural(_ text:String) -> String
     {
-        return text.stringByReplacingOccurrencesOfString("@", withString: "s")
+        return text.replacingOccurrences(of: "@", with: "s")
 
     }
     
-  static  func MakeOperatorSingle(text:String) -> String {
+  static  func MakeOperatorSingle(_ text:String) -> String {
         
-        return text.stringByReplacingOccurrencesOfString("@", withString: "")
+        return text.replacingOccurrences(of: "@", with: "")
     }
     
-    static func fixNumber(number:Double)->String
+    static func fixNumber(_ number:Double)->String
     {
       return String(format: number == floor(number) ? "%.0f" : "%.1f", number)
     }

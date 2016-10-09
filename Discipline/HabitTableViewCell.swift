@@ -8,7 +8,7 @@
 
 import UIKit
 import Material
-import Font_Awesome_Swift
+//import Font_Awesome_Swift
 class HabitTableViewCell: UITableViewCell {
 
     @IBOutlet weak var btnAdd: UIButton!
@@ -19,11 +19,11 @@ class HabitTableViewCell: UITableViewCell {
     @IBOutlet weak var lblStats: UILabel!
     @IBOutlet weak var lblTitle: UILabel!
     
-    @IBAction func btnRefreshAction(sender: AnyObject) {
+    @IBAction func btnRefreshAction(_ sender: AnyObject) {
         delegate?.refreshSelected(self)
     }
     
-    @IBAction func btnAddAction(sender: AnyObject) {
+    @IBAction func btnAddAction(_ sender: AnyObject) {
         delegate?.addSelected(self)
        // pulseLabel()
     }
@@ -38,7 +38,7 @@ class HabitTableViewCell: UITableViewCell {
     
     func pulseLabel(){
       // self.lblScore.textColor = MaterialColor.blue.base
-        UIView.animateWithDuration(1, animations: {
+        UIView.animate(withDuration: 1, animations: {
             self.fadeOut()
             }, completion: {
                 (value: Bool) in
@@ -52,8 +52,8 @@ class HabitTableViewCell: UITableViewCell {
      
      - parameter duration: custom animation duration
      */
-    func fadeIn(duration duration: NSTimeInterval = 0.5) {
-        UIView.animateWithDuration(duration, animations: {
+    func fadeIn(duration: TimeInterval = 0.5) {
+        UIView.animate(withDuration: duration, animations: {
             self.lblStats.alpha = 1.0
 
         })
@@ -64,15 +64,15 @@ class HabitTableViewCell: UITableViewCell {
      
      - parameter duration: custom animation duration
      */
-    func fadeOut(duration duration: NSTimeInterval = 0.5) {
-        UIView.animateWithDuration(duration, animations: {
+    func fadeOut(duration: TimeInterval = 0.5) {
+        UIView.animate(withDuration: duration, animations: {
             self.lblStats.alpha = 0.0
         })
     }
 
     
 
-        override func setSelected(selected: Bool, animated: Bool) {
+        override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
       
@@ -83,7 +83,7 @@ class HabitTableViewCell: UITableViewCell {
 
 protocol HabitAdderDelegate {
 
-    func addSelected(habitCell:HabitTableViewCell)
-    func refreshSelected(habitCell:HabitTableViewCell)
+    func addSelected(_ habitCell:HabitTableViewCell)
+    func refreshSelected(_ habitCell:HabitTableViewCell)
 
 }
