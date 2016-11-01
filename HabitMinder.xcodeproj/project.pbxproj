@@ -72,6 +72,7 @@
 		7EA8A9831D90D79F000D6B64 /* App Icon [Squared] */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "App Icon [Squared]"; path = "Assets.xcassets/App Icon [Squared]"; sourceTree = "<group>"; };
 		7EA8A9871D9972EC000D6B64 /* scorekeeper_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scorekeeper_white.png; sourceTree = "<group>"; };
 		7EA8A9891D997907000D6B64 /* ScoresTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoresTableViewController.swift; sourceTree = "<group>"; };
+		7EBB96341DA9FDA00067F980 /* HabitMinder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HabitMinder.entitlements; sourceTree = SOURCE_ROOT; };
 		7ECCE7DF1D6BA46300BA1164 /* HabitMinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitMinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ECCE7E21D6BA46300BA1164 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7ECCE7E41D6BA46300BA1164 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +181,7 @@
 		7ECCE7E11D6BA46300BA1164 /* HabitMinder */ = {
 			isa = PBXGroup;
 			children = (
+				7EBB96341DA9FDA00067F980 /* HabitMinder.entitlements */,
 				7ECCE7E81D6BA46300BA1164 /* Main.storyboard */,
 				7ECCE7E21D6BA46300BA1164 /* AppDelegate.swift */,
 				7EA8A9861D9428A2000D6B64 /* ModelClasses */,
@@ -333,7 +335,12 @@
 					7ECCE7DE1D6BA46300BA1164 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = Q3YWELPZJ9;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0810;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					7ECCE7F41D6BA46300BA1164 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -692,13 +699,14 @@
 			baseConfigurationReference = 1CDF4F69C3E79C9E7B77AD64 /* Pods-HabitMinder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HabitMinder.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Discipline/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shannonlayden.HabitMinder;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aporias.habitminder;
 				PRODUCT_NAME = HabitMinder;
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
@@ -711,13 +719,14 @@
 			baseConfigurationReference = 19041F5784E59963920B78B1 /* Pods-HabitMinder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HabitMinder.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Discipline/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shannonlayden.HabitMinder;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aporias.habitminder;
 				PRODUCT_NAME = HabitMinder;
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;

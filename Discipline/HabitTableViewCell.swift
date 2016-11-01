@@ -52,7 +52,7 @@ class HabitTableViewCell: UITableViewCell {
      
      - parameter duration: custom animation duration
      */
-    func fadeIn(duration: TimeInterval = 0.5) {
+    func fadeIn(_ duration: TimeInterval = 0.5) {
         UIView.animate(withDuration: duration, animations: {
             self.lblStats.alpha = 1.0
 
@@ -64,7 +64,7 @@ class HabitTableViewCell: UITableViewCell {
      
      - parameter duration: custom animation duration
      */
-    func fadeOut(duration: TimeInterval = 0.5) {
+    func fadeOut(_ duration: TimeInterval = 0.5) {
         UIView.animate(withDuration: duration, animations: {
             self.lblStats.alpha = 0.0
         })
